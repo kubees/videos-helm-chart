@@ -1,0 +1,6 @@
+dependencies:
+- name: microservices-umbrella-chart
+  repository: s3://all-helm-repository/charts
+  version: 0.1.0
+digest: sha256:2bb5c3020db64994c89071788f36031adfeabdcfbd9392160d5e4b4a4f585a49
+generated: "2022-11-11T20:15:44.076727+01:00"

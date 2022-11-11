@@ -24,3 +24,11 @@ microservices-umbrella-chart:
     replicas: 1
   serviceAccount:
     name: videos-api-sa
+  service:
+    name: videos-api
+    type: ClusterIP
+    ports:
+      - protocol: TCP
+        name: http
+        port: 10010
+        targetPort: 10010

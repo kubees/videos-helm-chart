@@ -18,9 +18,17 @@ microservices-umbrella-chart:
       memoryLimit: 500Mi
       memoryRequest: 500Mi
       name: videos-api-container
-      port: 5000
+      port: 10010
     name: videos-api
     namespace: microservices
     replicas: 1
   serviceAccount:
     name: videos-api-sa
+  service:
+    name: videos-api
+    type: ClusterIP
+    ports:
+      - protocol: TCP
+        name: http
+        port: 10010
+        targetPort: 10010

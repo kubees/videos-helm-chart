@@ -1,0 +1,26 @@
+microservices-umbrella-chart:
+  deployment:
+    container:
+      cpuLimit: 1
+      cpuRequest: 0.5
+      digest: sha256:acd992d82dcad2484735e5c9b33db73c5a913d6cb61067336b58db0886e9f221
+      env:
+        - name: ENVIRONMENT
+          value: DEBUG
+        - name: REDIS_HOST
+          value: playlists-db
+        - name: REDIS_PORT
+          value: "6379"
+        - name: FLAKY
+          value: "false"
+      healthPath: /
+      image: aimvector/service-mesh
+      memoryLimit: 500Mi
+      memoryRequest: 500Mi
+      name: videos-api-container
+      port: 5000
+    name: videos-api
+    namespace: microservices
+    replicas: 1
+  serviceAccount:
+    name: videos-api-sa

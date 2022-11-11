@@ -1,0 +1,25 @@
+name: Helm Chart CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: Run Checkov Analysis
+        uses: bridgecrewio/checkov-action@master
+        id: checkov
+        with:
+          directory: videos-helm-chart
+          quiet: true
+          framework: helm
+          output_format: sarif
+          output_file_path: reports/results.sarif
+          download_external_modules: true

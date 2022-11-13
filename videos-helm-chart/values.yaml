@@ -1,5 +1,16 @@
 microservices-umbrella-chart:
   deployment:
+    initContainer:
+      name: data-seed
+      image: ahmedgrati/data-seed-job
+      digest: sha256:85b6fd8502bc3a4bd2f47868f25ac00a5835d42a751166cec40fadb37951bc6c
+      env:
+        - name: MICROSERVICE
+          value: videos
+        - name: REDIS_HOST
+          value: redis-master.databases
+        - name: REDIS_PORT
+          value: "6379"
     container:
       cpuLimit: 1
       cpuRequest: 0.5

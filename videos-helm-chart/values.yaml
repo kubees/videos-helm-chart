@@ -1,30 +1,16 @@
+global:
+  namespace: microservices
 microservices-umbrella-chart:
   deployment:
     initContainer:
       name: data-seed
       image: ahmedgrati/data-seed-job
       digest: sha256:5ffd38163485b189e8824c01a61f174a118c9c9555c618728f2be85e2a32b025
-      env:
-        - name: MICROSERVICE
-          value: videos
-        - name: REDIS_HOST
-          value: redis-master.databases
-        - name: REDIS_PORT
-          value: "6379"
     container:
       cpuLimit: 1
       cpuRequest: 0.5
       digest: sha256:d92de30e87d11707ec0f0ca0912198c006a7857b620776cfc388a2e16c1f0805
       image: ahmedgrati/videos-ms
-      env:
-        - name: ENVIRONMENT
-          value: DEBUG
-        - name: REDIS_HOST
-          value: redis-master.databases
-        - name: REDIS_PORT
-          value: "6379"
-        - name: FLAKY
-          value: "false"
       healthPath: /
       memoryLimit: 500Mi
       memoryRequest: 500Mi
@@ -43,3 +29,17 @@ microservices-umbrella-chart:
         name: http
         port: 10010
         targetPort: 10010
+  configmap:
+    name: videos-env
+    data:
+      ENVIRONMENT: DEBUG
+      REDIS_HOST: redis-master.databases
+      REDIS_PORT: 6379
+      FLAKY: false
+
+  initConfigMap:
+    name: videos-data-seed-env
+    data:
+      MICROSERVICE: videos
+      REDIS_HOST: redis-master.databases
+      REDIS_PORT: 6379

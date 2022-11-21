@@ -10,15 +10,15 @@ microservices-umbrella-chart:
     container:
       cpuLimit: 1
       cpuRequest: 0.5
-      digest: sha256:d92de30e87d11707ec0f0ca0912198c006a7857b620776cfc388a2e16c1f0805
+      digest: sha256:83e6ad778815a7fd8ad1ebb26e72287da5ac0f84c200f6bc0e1a70f4ef9a91c2
       image: ahmedgrati/videos-ms
       probe:
         readinessProbe:
           port: 10010
-          path: /healthz
+          path: /
         livenessProbe:
           port: 10010
-          path: /healthz
+          path: /
       memoryLimit: 500Mi
       memoryRequest: 500Mi
       name: videos-api-container
@@ -40,6 +40,10 @@ microservices-umbrella-chart:
         name: http
         port: 10010
         targetPort: 10010
+      - protocol: TCP
+        name: metrics
+        port: 8000
+        targetPort: 8000
   configmap:
     name: videos-env
     data:

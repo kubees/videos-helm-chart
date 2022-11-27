@@ -25,4 +25,4 @@ appVersion: "1.16.0"
 dependencies:
   - name: microservices-umbrella-chart
     version: v0.1.0
-    repository: https://all-helm-repository.s3.eu-west-1.amazonaws.com/charts
+    repository: https://gitlab.com/api/v4/projects/41399774/packages/helm/stable

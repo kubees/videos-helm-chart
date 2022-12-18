@@ -10,7 +10,7 @@ microservices-umbrella-chart:
     container:
       cpuLimit: 1
       cpuRequest: 0.5
-      digest: sha256:83e6ad778815a7fd8ad1ebb26e72287da5ac0f84c200f6bc0e1a70f4ef9a91c2
+      digest: sha256:538c424b87323b8c5aaac640f806ab6ede61fc5d84d517fb1bbb26caeca0681d
       image: ahmedgrati/videos-ms
       probe:
         readinessProbe:
@@ -51,6 +51,7 @@ microservices-umbrella-chart:
       REDIS_HOST: redis-master.databases
       REDIS_PORT: 6379
       FLAKY: false
+      JAEGER_ENDPOINT: http://jaeger-collector.monitoring:14268/api/traces
 
   initConfigMap:
     name: videos-data-seed-env

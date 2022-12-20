@@ -10,7 +10,7 @@ microservices-umbrella-chart:
     container:
       cpuLimit: 1
       cpuRequest: 0.5
-      digest: sha256:538c424b87323b8c5aaac640f806ab6ede61fc5d84d517fb1bbb26caeca0681d
+      digest: sha256:e12c60f08dd4e3b9a698021520954210b00a8b4425a95531dbfbbe7d5510d31d
       image: ahmedgrati/videos-ms
       probe:
         readinessProbe:
